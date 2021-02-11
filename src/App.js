@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import ProductsPage from './pages/Products.page/Products.page'
+import CartPage from './pages/Cart.page/Cart.page'
+import { CART_ROUTE, PRODUCTS_ROUTE } from './routePaths'
+import { useDispatch } from 'react-redux'
+import { fetchProducts } from './store/actions/products.actions'
+import { setCart } from './store/actions/cart.actions'
 
-function App() {
+function App({ dealers }) {
+  const dispatch = useDispatch()
+  useEffect(() => dispatch(fetchProducts(dealers)), [])
+  useEffect(() => dispatch(setCart()), [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Navbar />
+      <div className='container'>
+        <Switch>
+          <Route exact path={PRODUCTS_ROUTE} component={ProductsPage} />
+          <Route path={CART_ROUTE} component={CartPage} />
+          <Redirect to='/' />
+        </Switch>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

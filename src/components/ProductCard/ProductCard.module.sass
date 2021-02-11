@@ -1,0 +1,87 @@
+$image_height: 140px
+$actions_height: 35px
+
+.product
+  width: 23.5%
+  height: 300px
+  margin-right: 2%
+  margin-bottom: 20px
+  border: 1px solid #000
+  &:nth-child(4n)
+    margin-right: unset
+
+.image_container
+  height: $image_height
+
+.image
+  width: 100%
+  height: 100%
+  object-fit: contain
+
+.content
+  padding: 10px
+  border-top: 1px solid #c1c1c1
+  height: calc(100% - #{$image_height})
+
+.info
+  height: calc(100% - #{$actions_height})
+
+.title
+  font-size: 22px
+  font-weight: bold
+
+.price
+  margin-top: 5px
+  span
+    font-weight: bold
+
+.actions
+  display: flex
+  align-items: center
+  justify-content: space-between
+  height: $actions_height
+
+.product_count
+  display: flex
+  height: 100%
+
+.count_input
+  width: 30px
+  margin: 0 3px
+
+.add_to_cart
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  height: 100%
+  padding: 0 10px
+  cursor: pointer
+
+.in_cart
+  font-size: 11px
+
+
+@media (max-width: 1210px)
+  .product
+    width: 32%
+    margin-right: 2%
+    &:nth-child(4n)
+      margin-right: 2%
+    &:nth-child(3n)
+      margin-right: unset
+
+@media (max-width: 768px)
+  .product
+    width: 49%
+    margin-right: 2%
+    &:nth-child(3n)
+      margin-right: 2%
+    &:nth-child(2n)
+      margin-right: unset
+
+@media (max-width: 500px)
+  .product
+    width: 100%
+    &:nth-child(n)
+      margin-right: unset
